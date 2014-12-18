@@ -23,7 +23,7 @@ void Simulator::resize(unsigned int binsX, unsigned int binsY)
     numberOfBinsY = binsY;
     binSizeX = 1.0/binsX;
     binSizeY = 1.0/binsY;
-    wantedWalkersAtBoundary = 1000;
+    wantedWalkersAtBoundary = 10000;
     normalizationFactor = 1.0/(wantedWalkersAtBoundary/numberOfBinsY);
     histogram.resize(binsX*binsY);
 }

@@ -52,7 +52,7 @@
 #include <cmath>
 #include <QOpenGLFramebufferObjectFormat>
 using namespace std;
-
+namespace CompPhys {
 Controller::Controller()
     :
       m_running(true),
@@ -207,4 +207,5 @@ bool Controller::previousStepCompleted() const
 bool Controller::simulatorOutputDirty() const
 {
     return m_simulatorOutputDirty;
+}
 }

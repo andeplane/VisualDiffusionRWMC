@@ -19,7 +19,7 @@ extern "C" int qtmn (int argc, char * argv [])
 int main (int argc, char * argv [])
 # endif
 {
-    qmlRegisterType<Controller>("Controller", 1, 0, "Controller");
+    qmlRegisterType<CompPhys::Controller>("Controller", 1, 0, "Controller");
 
     QGuiApplication app(argc, argv);
     QQuickView view;

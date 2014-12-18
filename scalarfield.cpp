@@ -64,7 +64,7 @@ void ScalarField::update(ScalarFieldData &data)
 
     // Transfer vertex data to VBO 0
     m_funcs->glBindBuffer(GL_ARRAY_BUFFER, m_vboIds[0]);
-    m_funcs->glBufferData(GL_ARRAY_BUFFER, m_vertices.size() * sizeof(ScalarFieldData), &m_vertices[0], GL_STATIC_DRAW);
+    m_funcs->glBufferData(GL_ARRAY_BUFFER, m_vertices.size() * sizeof(ScalarFieldVertex), &m_vertices[0], GL_STATIC_DRAW);
     if(m_indicesDirty) {
         m_funcs->glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[1]);
         m_funcs->glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indices.size() * sizeof(GLuint), &m_indices[0], GL_STATIC_DRAW);

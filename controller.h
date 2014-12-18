@@ -50,7 +50,7 @@
 #include <QMutex>
 #include "simulator.h"
 #include "renderer.h"
-
+namespace CompPhys {
 class Controller : public QQuickFramebufferObject
 {
     Q_OBJECT
@@ -144,3 +144,4 @@ private:
     bool m_renderParticles;
     bool m_renderScalarField;
 };
+}

@@ -47,9 +47,6 @@ void Renderer::render()
     glClearColor(0, 0, 0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-
     glDisable(GL_DEPTH_TEST);
     // Render data
     if(m_renderScalarField) m_scalarField.render();
@@ -59,18 +56,19 @@ void Renderer::render()
 
 Renderer::Renderer() :
     m_skipNextFrame(false),
+    m_renderPoints(true),
+    m_renderScalarField(true),
     m_syncCount(0),
     m_renderCount(0),
-    m_dirtyCount(0),
-    m_renderPoints(true),
-    m_renderScalarField(true)
+    m_dirtyCount(0)
 {
 
 }
 
 Renderer::~Renderer()
 {
-
+    m_data.pointsData.positions.clear();
+    m_data.scalarFieldData.values.clear();
 }
 
 QOpenGLFramebufferObject *Renderer::createFramebufferObject(const QSize &size) {
