@@ -33,11 +33,6 @@ void ScalarField::ensureInitialized()
     if(!m_funcs) m_funcs = new QOpenGLFunctions(QOpenGLContext::currentContext());
 }
 
-QVector3D ScalarField::vectorFromColor(const QColor &color)
-{
-    return QVector3D(color.redF(), color.greenF(), color.blueF());
-}
-
 void scalarToRGBRainBow(float scalar, float &red, float &green, float &blue)
 {
     float scaled = (1.0 - scalar)*4;

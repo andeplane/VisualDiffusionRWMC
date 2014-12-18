@@ -39,5 +39,4 @@ private:
     void generateVBOs();
     void ensureInitialized();
     unsigned int index(int i, int j) { return i + j*m_numPointsY; }
-    QVector3D vectorFromColor(const QColor &color);
 };

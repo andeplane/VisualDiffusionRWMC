@@ -22,6 +22,7 @@ public:
     ~Simulator();
     std::vector<QVector2D> walkers;
     std::vector<float> histogram;
+    std::vector<std::vector<unsigned int> > cellList;
     void resize(unsigned int binsX, unsigned int binsY);
     void calculateHistogram();
     unsigned int binIndex1D(unsigned int binX, unsigned int binY);

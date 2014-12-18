@@ -32,6 +32,7 @@ void Simulator::calculateHistogram()
 {
     // Reset bins
     for(float &val : histogram) val = 0;
+    for(auto &list : cellList) list.clear();
 
     // Update bins
     for(unsigned int n=0; n<walkers.size(); n++) {
@@ -71,17 +72,6 @@ void Simulator::processWalkers()
 
 void Simulator::applyBoundaryConditions()
 {
-    const unsigned int binX = 0;
-    const int wantedWalkersPerBin = wantedWalkersAtBoundary / numberOfBinsY;
-    for(unsigned int binY=0; binY<numberOfBinsY; binY++) {
-        unsigned int index = binIndex1D(binX, binY);
-        int numberOfWalkersInBin = histogram[index];
-        int deltaWalkers = wantedWalkersPerBin - numberOfWalkersInBin;
-        while(deltaWalkers-- > 0) {
-            addWalker(0, binSizeX, binY*binSizeY, (binY+1)*binSizeY);
-        }
-    }
-
     // Remove all walkers outside the domain
     unsigned int removedWalkers = 0;
     for(unsigned int n=0; n<walkers.size(); n++) {
@@ -93,6 +83,19 @@ void Simulator::applyBoundaryConditions()
             removedWalkers++;
         }
     }
+
+    const unsigned int binX = 0;
+    const int wantedWalkersPerBin = wantedWalkersAtBoundary / numberOfBinsY;
+    for(unsigned int binY=0; binY<numberOfBinsY; binY++) {
+        unsigned int index = binIndex1D(binX, binY);
+        int numberOfWalkersInBin = histogram[index];
+        int deltaWalkers = wantedWalkersPerBin - numberOfWalkersInBin;
+        while(deltaWalkers-- > 0) {
+            addWalker(0, binSizeX, binY*binSizeY, (binY+1)*binSizeY);
+        }
+    }
+
+
 
     calculateHistogram();
 }

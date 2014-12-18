@@ -72,9 +72,9 @@ Controller::Controller()
 
 Controller::~Controller()
 {
-    m_simulatorInputMutex.unlock();
-    m_simulatorOutputMutex.unlock();
-    m_simulatorRunningMutex.unlock();
+    // m_simulatorInputMutex.unlock();
+    // m_simulatorOutputMutex.unlock();
+    // m_simulatorRunningMutex.unlock();
     m_simulatorWorker.quit();
     m_simulatorWorker.wait();
 }

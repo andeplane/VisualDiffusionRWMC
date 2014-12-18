@@ -23,5 +23,4 @@ private:
     void createShaderProgram();
     void generateVBOs();
     void ensureInitialized();
-    QVector3D vectorFromColor(const QColor &color);
 };

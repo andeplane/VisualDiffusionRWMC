@@ -22,26 +22,15 @@ public:
     Renderer();
     ~Renderer();
 
-    void setViewportSize(const QSize &size) { m_viewportSize = size; }
-    void resetProjection();
-    void setModelViewMatrices(double zoom, double tilt, double pan, double roll, const QVector3D &systemSize);
-
     QOpenGLFramebufferObject *createFramebufferObject(const QSize &size);
     void synchronize(QQuickFramebufferObject *item);
     void render();
 
 private:
-    QSize m_viewportSize;
-
-    QVector3D  m_systemSize;
-    QMatrix4x4 m_projectionMatrix;
-    QMatrix4x4 m_modelViewMatrix;
-    QMatrix4x4 m_lightModelViewMatrix;
-
     bool m_skipNextFrame;
     bool m_renderPoints;
     bool m_renderScalarField;
-    Points *m_points;
+    Points m_points;
     ScalarField m_scalarField;
     VisualData m_data;
 
